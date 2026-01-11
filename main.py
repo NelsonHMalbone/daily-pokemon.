@@ -1,10 +1,17 @@
 import requests
 import json
+import random
 
-id_pokemon = int(input("Pokemon ID: "))
 
-api = f'https://pokeapi.co/api/v2/pokemon/{id_pokemon}'
-request = requests.get(api)
+url = 'https://pokeapi.co/api/v2/pokemon?limit=100000'
+request = requests.get(url)
+request.raise_for_status()
 content = request.json()
 
-print(json.dumps(content["forms"], indent=4))
+pokemon_data = content["results"]
+
+random_pokemon = random.choice(pokemon_data)
+
+print("Random Pokemon")
+print("name: ", random_pokemon["name"])
+print("url: ", random_pokemon["url"])

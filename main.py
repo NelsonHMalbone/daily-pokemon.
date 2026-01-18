@@ -14,13 +14,14 @@ if not API_KEY:
     raise RuntimeError("API_KEY not set")
 
 user_input = input("Enter topic to get news: ")
-url = f'https://newsapi.org/v2/everything?q={user_input}&from=2025-12-17&sortBy=publishedAt&apiKey={API_KEY}'
+user_input_date = input("Enter date to get news ex 2025-12-20: ")
+url = f'https://newsapi.org/v2/everything?q={user_input}&from={user_input_date}&sortBy=publishedAt&apiKey={API_KEY}'
 
 
 req = requests.get(url)
 content = req.json()
 
 for index, article in enumerate(content['articles'], start=1):
-    print(f'{index}: {article['title']}')
+    print(f'{index}: {article['title']} \n {article["description"]} \n {article["url"]} \n')
 
 

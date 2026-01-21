@@ -22,6 +22,8 @@ req = requests.get(url)
 content = req.json()
 
 for index, article in enumerate(content['articles'], start=1):
-    print(f'{index}: {article['title']} \n {article["description"]} \n {article["url"]} \n')
+    print(f'{index}: {article['title']} \n '
+          f'{article["description"]} \n '
+          f'{article["url"]} \n')
 
 

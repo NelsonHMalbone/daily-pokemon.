@@ -23,10 +23,8 @@ req = requests.get(url)
 content = req.json()
 
 body = ""
-for index, article in enumerate(content['articles'], start=1):
+for index, article in enumerate(content['articles']):
     body = body + article['title'] + '\n' + article['description'] + 2*"\n"
-    print(f'{index}: {article['title']} \n '
-          f'{article["description"]} \n '
-          f'{article["url"]} \n')
+    print("email was sent")
 
 send_email(body)

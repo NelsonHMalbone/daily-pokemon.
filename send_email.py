@@ -18,7 +18,7 @@ def send_email(message): # this is a string
     msg = EmailMessage()
     msg["From"] = username
     msg["To"] = recipients
-    msg["Subject"] = "Test Email"
+    msg["Subject"] = "Daily News"
     msg.set_content(message)
 
     context = ssl.create_default_context(cafile=certifi.where())
@@ -27,4 +27,3 @@ def send_email(message): # this is a string
         server.login(username, password)
         server.send_message(msg)
 
-send_email("Hello World")

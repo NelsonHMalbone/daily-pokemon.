@@ -2,6 +2,7 @@ import requests
 from dotenv import load_dotenv
 import os
 from pathlib import Path
+from send_email import send_email
 
 # loading dotenv file.
 env_path = Path(__file__).parent / '.env'
@@ -21,9 +22,11 @@ url = f'https://newsapi.org/v2/everything?q=Code&sortBy=publishedAt&apiKey={API_
 req = requests.get(url)
 content = req.json()
 
+body = ""
 for index, article in enumerate(content['articles'], start=1):
+    body = body + article['title'] + '\n' + article['description'] + 2*"\n"
     print(f'{index}: {article['title']} \n '
           f'{article["description"]} \n '
           f'{article["url"]} \n')
 
-
+send_email(body)

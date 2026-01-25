@@ -16,7 +16,11 @@ if not API_KEY:
 
 #user_input = input("Enter topic to get news: ")
 #user_input_date = input("Enter date to get news ex 2025-12-20: ")
-url = f'https://newsapi.org/v2/everything?q=Code&sortBy=publishedAt&apiKey={API_KEY}'
+url = (f'https://newsapi.org/v2/everything?'
+       f'q=Code&'
+       f'sortBy=publishedAt'
+       f'&apiKey={API_KEY}&'
+       f'language=en')
 
 
 req = requests.get(url)

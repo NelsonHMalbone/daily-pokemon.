@@ -14,7 +14,6 @@ API_KEY = os.getenv("MYAPIKEY")
 if not API_KEY:
     raise RuntimeError("API_KEY not set")
 
-#user_input = input("Enter topic to get news: ")
 #user_input_date = input("Enter date to get news ex 2025-12-20: ")
 url = (f'https://newsapi.org/v2/everything?'
        f'q=Code&'
@@ -28,7 +27,12 @@ content = req.json()
 
 body = ""
 for article in content['articles'][:10]:
-    body = body + article['title'] + '\n' + article['description'] + 2*"\n"
+    body = (body +
+            article['title'] + '\n' +
+            article['description'] +
+            article['url'] +
+            2*"\n")
+
 print("email was sent")
 
 send_email(body)

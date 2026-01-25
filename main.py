@@ -25,6 +25,6 @@ content = req.json()
 body = ""
 for index, article in enumerate(content['articles']):
     body = body + article['title'] + '\n' + article['description'] + 2*"\n"
-    print("email was sent")
+print("email was sent")
 
 send_email(body)
